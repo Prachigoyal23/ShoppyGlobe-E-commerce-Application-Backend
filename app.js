@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/products', productRoutes);
-app.use('/cart', cartRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 app.use('/', authRoutes);
 
 export default app;

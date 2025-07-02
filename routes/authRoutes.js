@@ -6,8 +6,8 @@ import { verifyToken } from '../middleware/verifyToken.js';
 import { isAdmin } from '../middleware/isAdmin.js';
 
 
-router.post('/register', registerUser); // POST /api/auth/register
-router.post('/login', loginUser); // POST /api/auth/login
+router.post('/POST/register', registerUser); // POST /api/auth/register
+router.post('/POST/login', loginUser); // POST /api/auth/login
 
 // GET /api/auth/users — only Admin can access 
 router.get('/users', verifyToken, isAdmin, getAllUsers);

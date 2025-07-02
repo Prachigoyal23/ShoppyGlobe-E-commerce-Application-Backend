@@ -1,4 +1,3 @@
-// import Product from "../models/Product";
 import Product from "../models/Product.js";
 
 // ----------- Add new Product in MongoDB ---------------
@@ -36,6 +35,7 @@ export const getProductById = async (req, res) => {
     res.status(200).json(product); // If found, return product in json response
 
   } catch (error) {
+    console.error("Error fetching product:", error);
     res.status(500).json({ message: "Failed to fetch product" });
   }
 };

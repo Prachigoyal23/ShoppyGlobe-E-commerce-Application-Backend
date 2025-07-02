@@ -1,6 +1,10 @@
 import User from "../models/User.js"; // import the User model from MongoDB
 import bcrypt from "bcryptjs"; // use to hash password
 import jwt from "jsonwebtoken"; // use to create and verify tokens
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 // Get All Registered Users (Only Admin can access them)
 export const getAllUsers = async (req, res) => {
@@ -27,12 +31,13 @@ export const registerUser = async (req, res) => {
         name, 
         email, 
         password: hashedPassword, 
-        role // 👈 this will take 'admin' if provided
+        role //  this will take 'admin' if provided
     });
     await newUser.save();
 
     res.status(201).json({ message: `${name} as ${role} registered successfully` });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -42,7 +47,6 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body; // get login info from request
-
     const user = await User.findOne({ email }); // check user exist or not
 
     if (!user) {
@@ -60,9 +64,17 @@ export const loginUser = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
+    console.log("token", token);
 
     res.status(200).json({ message:'Here your token use for Login', token }); // send token to frontend
   } catch (error) {
+    console.error("🔥 Login Error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY0ZTFhNjU5YzJjNT
+// lmYmIzOWRjZWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTE0NjAyMDMsImV4cCI6MTc1MTQ2MzgwM30.
+// fQUA-RVKLLuuJNj9Sh_VWHCeicNhE1seD6b1R3BLikk
