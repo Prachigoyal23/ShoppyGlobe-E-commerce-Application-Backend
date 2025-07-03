@@ -6,24 +6,24 @@ This project is a backend for the ShoppyGlobe application. It includes RESTful A
 
 # 📁 Project Structure
 ShoppyGlobe-E-commerce-Backend
-   ├── controllers
-   |   ├──authController.js
-   |   ├──cartController.js
-   |   ├──productController.js
-   ├── middleware
-   |   ├──isAdmin.js
-   |   ├──verifyToken.js
-   ├── models
-   |   ├──Cart.js
-   |   ├──Product.js
-   |   ├──User.js
-   ├── routes
-   |   ├──authRoutes.js
-   |   ├──cartRoutes.js
-   |   ├──productRoutes.js
-   ├── app.js
-   ├── README.md
-   ├── server.js
+      ├── controllers
+      |   ├──authController.js
+      |   ├──cartController.js
+      |   ├──productController.js
+      ├── middleware
+      |   ├──isAdmin.js
+      |   ├──verifyToken.js
+      ├── models
+      |   ├──Cart.js
+      |   ├──Product.js
+      |   ├──User.js
+      ├── routes
+      |   ├──authRoutes.js
+      |   ├──cartRoutes.js
+      |   ├──productRoutes.js
+      ├── app.js
+      ├── README.md
+      ├── server.js
    
 ---
 
