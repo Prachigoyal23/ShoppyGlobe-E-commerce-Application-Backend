@@ -5,7 +5,7 @@ This project is a backend for the ShoppyGlobe application. It includes RESTful A
 ---
 
 # 📁 Project Structure
-📦 ShoppyGlobe-E-commerce-Backend
+📦ShoppyGlobe-E-commerce-Backend
    ├── controllers
    |   ├──authController.js
    |   ├──cartController.js
@@ -73,6 +73,4 @@ http://localhost:5002
     ⚙️ MongoDB CRUD operations
 
     📥 Tested via ThunderClient
-
----
 
