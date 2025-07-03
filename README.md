@@ -5,7 +5,7 @@ This project is a backend for the ShoppyGlobe application. It includes RESTful A
 ---
 
 # 📁 Project Structure
-📦ShoppyGlobe-E-commerce-Backend
+ShoppyGlobe-E-commerce-Backend
    ├── controllers
    |   ├──authController.js
    |   ├──cartController.js
@@ -74,3 +74,8 @@ http://localhost:5002
 
     📥 Tested via ThunderClient
 
+---
+
+# Github Link
+   ```bash
+   https://github.com/Prachigoyal23/ShoppyGlobe-E-commerce-Application-Backend
