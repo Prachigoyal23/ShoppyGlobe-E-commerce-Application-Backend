@@ -5,7 +5,8 @@ This project is a backend for the ShoppyGlobe application. It includes RESTful A
 ---
 
 # 📁 Project Structure
-ShoppyGlobe-E-commerce-Backend
+   ShoppyGlobe-E-commerce-Backend
+   
       ├── controllers
       |   ├──authController.js
       |   ├──cartController.js
