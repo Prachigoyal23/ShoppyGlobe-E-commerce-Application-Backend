@@ -101,8 +101,3 @@ export const loginUser = async (req, res) => {
   }
 };
 
-
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODcxNDJmMDMwNmJmNWQ3YThkYzNkYTkiL
-// CJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTIyNTMzMDcsImV4cCI6MTc1MjI1NjkwN30.gJ2l7b4VLrC6IcBHHBmzY
-// cUD5Eok6eW9YPpMRzIjBIA
