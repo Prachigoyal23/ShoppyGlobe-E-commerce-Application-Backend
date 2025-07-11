@@ -5,6 +5,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Inline strong password validator
+function isStrongPassword(password) {
+  // At least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return regex.test(password);
+}
+
 
 // Get All Registered Users (Only Admin can access them)
 export const getAllUsers = async (req, res) => {
@@ -20,6 +27,27 @@ export const getAllUsers = async (req, res) => {
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
+
+    if(!name || name.trim() === ""){
+      return res.status(400).json({message: "name feild is missing"})
+    }
+    if (!email || email.trim() === "") {
+      return res.status(400).json({ message: "Email field is required" });
+    }
+    // Email format validation
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Invalid email format" });
+    }
+    if (!password) {
+      return res.status(400).json({ message: "Password field is required" });
+    }
+    if (!isStrongPassword(password)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
+      });
+    }
 
     const existingUser = await User.findOne({ email });
     if (existingUser)
@@ -75,6 +103,6 @@ export const loginUser = async (req, res) => {
 
 
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY0ZTFhNjU5YzJjNT
-// lmYmIzOWRjZWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTE0NjAyMDMsImV4cCI6MTc1MTQ2MzgwM30.
-// fQUA-RVKLLuuJNj9Sh_VWHCeicNhE1seD6b1R3BLikk
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODcxNDJmMDMwNmJmNWQ3YThkYzNkYTkiL
+// CJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTIyNTMzMDcsImV4cCI6MTc1MjI1NjkwN30.gJ2l7b4VLrC6IcBHHBmzY
+// cUD5Eok6eW9YPpMRzIjBIA

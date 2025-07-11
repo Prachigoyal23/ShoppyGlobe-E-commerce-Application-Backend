@@ -5,7 +5,7 @@ import Product from "../models/Product.js";
 export const addToCart = async (req, res) => {
   try {
     const userId = req.user.userId; // GET user ID from token (middleware)
-    const { productId, quantity } = req.body;
+    const { productId, quantity, productName } = req.body;
 
     // check if product exists
     const product = await Product.findById(productId);
@@ -28,7 +28,7 @@ export const addToCart = async (req, res) => {
     if(itemIndex > -1) {
         cart.items[itemIndex].quantity += quantity; // increase quantity
     } else {
-        cart.items.push({ productId, quantity}); // add new item
+        cart.items.push({ productId, quantity, productName}); // add new item
     }
 
     await cart.save(); // save in MongoDB
@@ -44,7 +44,7 @@ export const addToCart = async (req, res) => {
 export const updateCartItem = async (req, res) => {
     try {
         const userId = req.user.userId;
-        const { productId, quantity } = req.body;
+        const { productId, quantity, productName } = req.body;
 
         const cart = await Cart.findOne({ userId });
         if(!cart) return res.status(404).json({ message: 'Cart not found'});
